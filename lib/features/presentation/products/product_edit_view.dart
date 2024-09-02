@@ -5,14 +5,12 @@ import 'package:stackbud_test/core/model/products_model.dart';
 import 'package:stackbud_test/features/controller/product_controller.dart';
 
 class ProductEditView extends GetView<ProductController> {
-  const ProductEditView({super.key});
+  final bool isEditing;
+  const ProductEditView({super.key, this.isEditing = false});
 
   @override
   Widget build(BuildContext context) {
-    // Extract the boolean flag from the arguments passed to the widget
-    final bool isEditing = Get.arguments as bool;
-    // Set the isEditing in the controller
-    controller.isEditing = isEditing;
+   
 
     if (isEditing == true) {
       final product = controller.selectedProduct;
@@ -68,7 +66,6 @@ class ProductEditView extends GetView<ProductController> {
                 child: Text(isEditing ? 'Update Product' : 'Add Product'),
                 onPressed: () => submitForm(),
               ),
-              SizedBox(height: 10),
             ],
           ),
         ),
@@ -87,13 +84,13 @@ class ProductEditView extends GetView<ProductController> {
   void submitForm() {
     if (controller.formKey.currentState!.validate()) {
       final product = Product(
-        id: controller.isEditing ? controller.selectedProduct?.id : null,
+        id: isEditing ? controller.selectedProduct?.id : null,
         name: controller.nameController.text,
         description: controller.descriptionController.text,
         price: int.parse(controller.priceController.text),
         category: controller.categoryController.text,
       );
-      if (controller.isEditing) {
+      if (isEditing) {
         controller.updateProduct(product);
       } else {
         controller.addProduct(product);

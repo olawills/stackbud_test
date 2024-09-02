@@ -18,21 +18,6 @@ class ProductController extends GetxController {
   final TextEditingController categoryController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-  // Check if it's editing form
-  final RxBool _isEditing = true.obs;
-
-  bool get isEditing => _isEditing.value;
-  set isEditing(bool value) {
-    _isEditing.value = value;
-  }
-
-  final RxBool _isAdding = false.obs;
-
-  bool get isAdding => _isAdding.value;
-  set isAdding(bool value) {
-    _isAdding.value = value;
-  }
-
   RxList<Product> get products => _products;
   set products(List<Product> value) => _products.value = value;
 

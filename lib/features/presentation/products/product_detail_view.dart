@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:stackbud_test/core/config/route/app_pages.dart';
 import 'package:stackbud_test/features/controller/product_controller.dart';
+import 'package:stackbud_test/features/presentation/products/product_edit_view.dart';
 
 class ProductDetailScreen extends GetView<ProductController> {
   const ProductDetailScreen({super.key});
@@ -15,8 +15,7 @@ class ProductDetailScreen extends GetView<ProductController> {
         actions: [
           IconButton(
             icon: const Icon(Icons.edit),
-            onPressed: () => Get.toNamed(Routes.productEdit,
-                arguments: controller.isEditing),
+            onPressed: () => Get.to(const ProductEditView(isEditing: true)),
           ),
           IconButton(
             icon: const Icon(Icons.delete),
@@ -82,19 +81,21 @@ class ProductDetailScreen extends GetView<ProductController> {
                         style:
                             const TextStyle(fontSize: 16, color: Colors.black),
                       ),
-                      // RichText(
-                      //   text: TextSpan(
-                      //     text: 'Description',
-                      //     style: const TextStyle(
-                      //         fontSize: 14, color: Colors.black),
-                      //     children: [
-                      //       TextSpan(
-                      //           text: product.description,
-                      //           style: const TextStyle(
-                      //               fontSize: 14, color: Colors.black)),
-                      //     ],
-                      //   ),
-                      // ),
+                      RichText(
+                        text: TextSpan(
+                          text: 'Description: ',
+                          style: const TextStyle(
+                              fontSize: 14, color: Colors.black),
+                          children: [
+                            TextSpan(
+                                text: product.description,
+                                style: const TextStyle(
+                                    overflow: TextOverflow.ellipsis,
+                                    fontSize: 14,
+                                    color: Colors.black)),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ],

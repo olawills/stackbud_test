@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stackbud_test/core/config/route/app_pages.dart';
 import 'package:stackbud_test/features/controller/product_controller.dart';
+import 'package:stackbud_test/features/presentation/products/product_edit_view.dart';
 
+// ** Screen responding for displaying the products
 class ProductsCatalogScreen extends GetView<ProductController> {
   const ProductsCatalogScreen({super.key});
 
@@ -24,11 +26,12 @@ class ProductsCatalogScreen extends GetView<ProductController> {
         onRefresh: () async {
           await Future.wait(
             [
+              // ** Fetch products if new ones are not updated
               controller.fetchProducts(),
               controller.fetchProducts(),
             ],
           );
-        },
+        }, //0704865354
         child: Obx(() {
           final filteredProducts =
               controller.filterProducts(controller.products);
@@ -54,7 +57,7 @@ class ProductsCatalogScreen extends GetView<ProductController> {
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: () => Get.toNamed(Routes.productEdit, arguments: controller.isAdding),
+        onPressed: () => Get.to(const ProductEditView()),
       ),
     );
   }
