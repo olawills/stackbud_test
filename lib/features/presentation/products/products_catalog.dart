@@ -31,7 +31,7 @@ class ProductsCatalogScreen extends GetView<ProductController> {
               controller.fetchProducts(),
             ],
           );
-        }, //0704865354
+        },
         child: Obx(() {
           final filteredProducts =
               controller.filterProducts(controller.products);
