@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "187853379726",
+    "project_id": "stackbud-test-interview",
+    "storage_bucket": "stackbud-test-interview.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:187853379726:android:c680ed094d0da4696791df",
+        "android_client_info": {
+          "package_name": "com.stackbud_test"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_Kr3NJL_5DRKntcsK7vnw5DH4PhnRhJU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
